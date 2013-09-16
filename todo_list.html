@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>ToDo List</title>
+  <style type="text/css">
+    #templates {
+      display: none;
+    }
+
+    #list .item {
+      background: blue;
+      width: 200px;
+      float: left;
+      padding 1px 20px;
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>TO DO LIST:</h1>
+
+<!-- INPUTS -->
+
+<!-- TO DO LIST -->
+
+<!-- TEMPLATE -->
+<div id="template">
+  <script class="item" type="text/template">
+    <div class = "item">
+      <h5><%= name %></h5>
+      <p>Complete? <%= complete %></p>
+    </div>
+  </script>
+</div>
+
+<!-- SCRIPT IMPORT -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+
+<!-- SCRIPT -->
+<script type="text/javascript">
+  // alert('Hello World!');
+
+  var tasks = [
+    {
+      name: 'Create TODO list',
+      complete: false
+    },
+    {
+      name: 'Implement Excercise',
+      complete: false
+    }
+  ];
+</script>
+
+</body>
+</html>
