@@ -6,8 +6,12 @@
       display: none;
     }
 
+    body {
+      background-color: #E5FFEB;
+    }
+
     #list .item {
-      background: blue;
+      background: #FAFFE5;
       width: 200px;
       float: left;
       padding 1px 20px;
@@ -22,11 +26,14 @@
 <!-- INPUTS -->
 
 <!-- TO DO LIST -->
+<div id="list">
+  
+</div>
 
 <!-- TEMPLATE -->
-<div id="template">
+<div id="templates">
   <script class="item" type="text/template">
-    <div class = "item">
+    <div class="item">
       <h5><%= name %></h5>
       <p>Complete? <%= complete %></p>
     </div>
@@ -42,7 +49,19 @@
 <script type="text/javascript">
   // alert('Hello World!');
 
-  var tasks = [
+  var renderList = function(list) {
+    // HTML Template
+    var itemTemplateHtml = $('#templates .item').html();
+    var itemTemplate = _.template(itemTemplateHtml);
+
+    // Loop over the array of list objects.
+    for(var i = 0; i < list.length; i += 1) {
+      var newItemHtml = itemTemplate(list[i]);
+      $('#list').append(newItemHtml);
+    }
+  };
+
+  var testTasks = [
     {
       name: 'Create TODO list',
       complete: false
@@ -52,6 +71,8 @@
       complete: false
     }
   ];
+
+  renderList(testTasks);
 </script>
 
 </body>
