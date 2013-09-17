@@ -92,8 +92,9 @@
   });
 
   $(document).on('change', '.checkbox-button', function(e) {
-    // alert("I heard it!");
-    
+    alert("I heard it!");
+    var index = $('.checkbox-button').index(this);
+    alert(index);
   });
 
 </script>
