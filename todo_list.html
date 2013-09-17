@@ -13,7 +13,7 @@
     #list .item {
       background: #FAFFE5;
       width: 200px;
-      float: left;
+/*      float: left;*/
       padding 1px 20px;
     }
   </style>
@@ -36,8 +36,7 @@
 <div id="templates">
   <script class="item" type="text/template">
     <div class="item">
-      <h5><%= name %></h5>
-      <p>Complete? <%= complete %></p>
+      <p><input type="checkbox" class="checkbox-button" name="complete" value= <%= complete %> > <%= name %> </p>
     </div>
   </script>
 </div>
@@ -90,6 +89,11 @@
       $('#submit-button').click();
       $(this).focus();
     }
+  });
+
+  $(document).on('change', '.checkbox-button', function(e) {
+    // alert("I heard it!");
+    
   });
 
 </script>
