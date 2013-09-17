@@ -24,8 +24,7 @@
 <h1>TO DO LIST:</h1>
 
 <!-- INPUTS -->
-<label>TO DO: </label><input type="text" id="name"></input>
-<label>Complete? </label><input type="text" id="complete"></input>
+<label>TO DO: </label><input type="text" id="nameInput"></input>
 <input id="submit-button" type="button" value="Add item"></input>
 
 <!-- TO DO LIST -->
@@ -50,12 +49,13 @@
 
 <!-- SCRIPT -->
 <script type="text/javascript">
-  // alert('Hello World!');
 
   var renderList = function(list) {
     // HTML Template
     var itemTemplateHtml = $('#templates .item').html();
     var itemTemplate = _.template(itemTemplateHtml);
+
+    $('#list').empty();
 
     // Loop over the array of list objects.
     for(var i = 0; i < list.length; i += 1) {
@@ -75,7 +75,23 @@
     }
   ];
 
-  renderList(testTasks);
+  $('#submit-button').on('click', function (e) {
+    // Create new item object
+    var item = $('#nameInput').val();
+    var newItem = { name: item,  complete: false };
+    testTasks.push(newItem);
+
+    renderList(testTasks);
+  });
+
+  $('#nameInput').keypress(function (e) {
+    if (e.which == 13 ) {
+      $(this).blur();
+      $('#submit-button').click();
+      $(this).focus();
+    }
+  });
+
 </script>
 
 </body>
