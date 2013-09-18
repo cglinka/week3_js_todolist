@@ -12,7 +12,7 @@
 
     #list .item {
       background: #FAFFE5;
-      width: 200px;
+      width: 400px;
 /*      float: left;*/
       padding 1px 20px;
     }
@@ -24,7 +24,7 @@
 <h1>TO DO LIST:</h1>
 
 <!-- INPUTS -->
-<label>TO DO: </label><input type="text" id="nameInput"></input>
+<label>TO DO: </label><input type="text" id="nameInput" placeholder="What needs to be done?"></input>
 <input id="submit-button" type="button" value="Add item"></input>
 
 <!-- TO DO LIST -->
@@ -36,7 +36,10 @@
 <div id="templates">
   <script class="item" type="text/template">
     <div class="item">
-      <p><input type="checkbox" class="checkbox-button" name="complete" value= <%= complete %> > <%= name %> </p>
+      <p>
+        <input type="checkbox" class="checkbox-button"/>
+        <%= name %> : <small>Complete? <%= complete %></small> </p>
+      </p>
     </div>
   </script>
 </div>
@@ -70,7 +73,7 @@
     },
     {
       name: 'Implement Excercise',
-      complete: false
+      complete: true
     }
   ];
 
@@ -92,9 +95,11 @@
   });
 
   $(document).on('change', '.checkbox-button', function(e) {
-    alert("I heard it!");
+    // alert("I heard it!");
     var index = $('.checkbox-button').index(this);
-    alert(index);
+    testTasks[index].complete = !testTasks[index].complete;
+
+    // renderList(testTasks);
   });
 
 </script>
